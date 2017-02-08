@@ -100,6 +100,10 @@ get-common-elements([H|T], Temp, A):-
 	get-common-elements(T, Temp  , A).
 
 
+common-unique-elements(L1, L2, A):-
+	flatten-list(L1, Temp1),
+	flatten-list(L2, Temp2),
+	get-common-elements(Temp1, Temp2 , A).
 
 
 
