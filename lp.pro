@@ -74,6 +74,31 @@ min-above-min(L1, L2, A):-
     great-list(Minimum, IgnoreL1, FinalList),
     find-min(FinalList, A).
 
+flatten-list([], []).
+
+flatten-list([H|T], A):-
+    \+(is_list(H)),
+    flatten-list(T, Temp),
+    append([H], Temp, A).
+
+flatten-list([H|T], A):-
+    is_list(H),
+    flatten-list(H, Temp),
+    flatten-list(T, Temp2),
+    append(Temp, Temp2, A).
+
+
+get-common-elements([],_,[]).
+
+get-common-elements([H|T], Temp , A):-
+	member(H, Temp),
+	get-common-elements(T, Temp, Temp2),
+	append([H], Temp2, A).
+
+get-common-elements([H|T], Temp, A):-
+	\+ (member(H, Temp)),
+	get-common-elements(T, Temp  , A).
+
 
 
 
