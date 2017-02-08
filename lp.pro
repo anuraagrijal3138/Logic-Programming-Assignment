@@ -55,15 +55,24 @@ find-min([H|T], Min):-
     Min is min(H, Tmin).
 
 %returns a list greater than a given alue
-great-list([], _, []).
+great-list(_, [], []).
 
-great-list([H|T1], A, [H|T2]):-
+great-list(A, [H|T1], [H|T2]):-
     H > A,
-    great-list(T1, A, T2).
+    great-list(A, T1, T2).
 
-great-list([H|T], A, Z):-
+great-list(A, [H|T], Z):-
     H =< A,
-    great-list(T, A, Z).
+    great-list(A, T, Z).
+
+
+
+min-above-min(L1, L2, A):-
+    ignore-char(L2, IgnoreL2),
+    find-min(IgnoreL2, Minimum),
+    ignore-char(L1, IgnoreL1),
+    great-list(Minimum, IgnoreL1, FinalList),
+    find-min(FinalList, A).
 
 
 
