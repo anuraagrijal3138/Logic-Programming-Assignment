@@ -47,7 +47,11 @@ ignore-char([H|T], Z):-
     ignore-char(T, Z).
 
 
-find-min([H|T], Min):-
 
+find-min([A], A).
+
+find-min([H|T], Min):-
+    find-min(T, Tmin),
+    Min is min(H, Tmin).
 
 
