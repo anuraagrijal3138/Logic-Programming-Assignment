@@ -24,3 +24,8 @@ sum-up-numbers-general([H|T], N):-
     N is TempSum + TempSum2.
 
 
+sum-up-numbers-general([H|T], N):-
+    \+ number(H),
+    \+ is_list(H),
+    sum-up-numbers-general(T, TempSum),
+    N is TempSum.
