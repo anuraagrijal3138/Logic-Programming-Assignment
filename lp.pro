@@ -1,4 +1,4 @@
-sum-up-numbers-simple([], 0).
+sum-up-numbers-simple([], 0). %exit case
 
 sum-up-numbers-simple([H|T] , N):-
     number(H),
@@ -13,7 +13,7 @@ sum-up-numbers-simple([H|T] , N):-
 
 
 
-sum-up-numbers-general([], 0).
+sum-up-numbers-general([], 0). %exit case
 
 sum-up-numbers-general([H|T], N):-
     number(H),
@@ -36,7 +36,7 @@ sum-up-numbers-general([H|T], N):-
 
 %ignors characters in the given list
 
-ignore-char([], []).
+ignore-char([], []).%exit case
 
 ignore-char([H|T], [H|Z]):-
     number(H),
@@ -74,7 +74,7 @@ min-above-min(L1, L2, A):-
     great-list(Minimum, IgnoreL1, FinalList),
     find-min(FinalList, A).
 
-flatten-list([], []).
+flatten-list([], []).%exit case
 
 flatten-list([H|T], A):-
     \+(is_list(H)),
